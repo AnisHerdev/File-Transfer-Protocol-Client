@@ -18,7 +18,6 @@ def connect():
     global ftp
     host = request.form['host']
     username = request.form['username']
-    
     password = request.form['password']
     
     try:
@@ -71,4 +70,5 @@ def disconnect():
     return render_template('index.html', message="Disconnected successfully!", error=None, files=[])
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
